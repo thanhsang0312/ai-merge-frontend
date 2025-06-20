@@ -1,48 +1,66 @@
-import db from '#/lib/db';
-import { Boundary } from '#/ui/boundary';
-import { LinkStatus } from '#/ui/link-status';
-import Link from 'next/link';
+'use client';
 
-export default function Page() {
-  const demos = db.demo.findMany();
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { useRouter } from 'next/navigation';
+import { Search } from 'lucide-react';
+import { Settings } from 'lucide-react';
+import Image from 'next/image';
+import CarouselPair from '#/components/CarouselPair';
+import TabCategories from '#/components/TabCategories';
+
+export default function HomePage() {
+  const router = useRouter();
   return (
-    <Boundary
-      label="Examples"
-      animateRerendering={false}
-      kind="solid"
-      className="flex flex-col gap-9"
-    >
-      {demos.map((section) => {
-        return (
-          <div key={section.name} className="flex flex-col gap-3">
-            <div className="font-mono text-xs font-semibold tracking-wider text-gray-700 uppercase">
-              {section.name}
-            </div>
-
-            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-              {section.items.map((item) => {
-                return (
-                  <Link
-                    href={`/${item.slug}`}
-                    key={item.name}
-                    className="group flex flex-col gap-1 rounded-lg bg-gray-900 px-5 py-3 hover:bg-gray-800"
-                  >
-                    <div className="flex items-center justify-between font-medium text-gray-200 group-hover:text-gray-50">
-                      {item.name} <LinkStatus />
-                    </div>
-
-                    {item.description ? (
-                      <div className="line-clamp-3 text-[13px] text-gray-500 group-hover:text-gray-300">
-                        {item.description}
-                      </div>
-                    ) : null}
-                  </Link>
-                );
-              })}
-            </div>
+    <div className="mx-auto flex max-h-[800px] min-h-screen max-w-lg flex-col items-center justify-start overflow-x-hidden overflow-y-scroll bg-[url('/images/background.png')] bg-cover bg-no-repeat p-4">
+      {/* Top Bar */}
+      <div className="mb-6 flex w-full items-center justify-between gap-2">
+        <Button
+          className="rounded-full bg-transparent px-3 py-2 text-xs hover:bg-[initial]"
+          // onClick={() => router.push("/buy-premium")}
+        >
+          <Image
+            width={36}
+            height={36}
+            src={'/images/icon-premium.png'}
+            alt=""
+          />
+        </Button>
+        <div className="mx-2 flex-1">
+          <div className="main-border relative rounded-2xl">
+            <Input
+              type="text"
+              placeholder="Search characters..."
+              className="rounded-full bg-gray-900 pl-8 text-xs"
+            />
+            <Search className="absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           </div>
-        );
-      })}
-    </Boundary>
+        </div>
+        <Button
+          className="rounded-full bg-transparent hover:bg-[initial]"
+          onClick={() => router.push('/settings')}
+        >
+          <Image
+            width={30}
+            height={30}
+            src={'/images/icon-setting.png'}
+            alt=""
+          />
+        </Button>
+      </div>
+      {/* Content will go here */}
+      <CarouselPair />
+      <TabCategories />
+      <div className="fixed flex items-center justify-center bottom-10">
+        <Button className="bg-transparent hover:bg-[initial] cursor-pointer">
+          <Image
+            width={100}
+            height={100}
+            src={'/images/button-center.png'}
+            alt=""
+          />
+        </Button>
+      </div>
+    </div>
   );
 }
