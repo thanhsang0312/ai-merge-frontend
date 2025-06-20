@@ -34,15 +34,15 @@ export default function RootLayout({
 }) {
   const demos = db.demo.findMany();
   return (
-    <html lang="en" className="[color-scheme:dark]">
+    <html lang="en" className="[color-scheme:dark] russo-one-regular">
       <body
-        className={`overflow-hidden bg-gray-950 font-sans ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`overflow-hidden bg-gray-950 ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="">
-          <div className="mx-auto mt-12 mb-24 max-w-4xl -space-y-[1px] lg:px-8 lg:py-0">
+          <div className="mx-auto max-w-4xl -space-y-[1px] lg:px-8 lg:py-0">
             {children}
 
-            <Byline />
+            {/* <Byline /> */}
           </div>
         </div>
       </body>

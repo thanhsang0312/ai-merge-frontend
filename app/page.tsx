@@ -12,7 +12,7 @@ import TabCategories from '#/components/TabCategories';
 export default function HomePage() {
   const router = useRouter();
   return (
-    <div className="mx-auto flex max-h-[800px] min-h-screen max-w-lg flex-col items-center justify-start overflow-x-hidden overflow-y-scroll bg-[url('/images/background.png')] bg-cover bg-no-repeat p-4">
+    <div className="mx-auto flex max-h-screen max-w-lg flex-col items-center justify-start overflow-x-hidden overflow-y-scroll bg-[url('/images/background.png')] bg-cover bg-no-repeat py-4">
       {/* Top Bar */}
       <div className="mb-6 flex w-full items-center justify-between gap-2">
         <Button
@@ -31,7 +31,7 @@ export default function HomePage() {
             <Input
               type="text"
               placeholder="Search characters..."
-              className="rounded-full bg-gray-900 pl-8 text-xs"
+              className="rounded-full bg-gray-900 pl-8 text-xs font-bold text-white"
             />
             <Search className="absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           </div>
