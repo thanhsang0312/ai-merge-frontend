@@ -39,7 +39,12 @@ export default function RootLayout({
         className={`overflow-hidden bg-gray-950 ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="">
-          <div className="mx-auto max-w-4xl -space-y-[1px] lg:px-8 lg:py-0">
+          <div className="relative mx-auto -space-y-[1px] lg:px-8 lg:py-0">
+            {/* Blurred background layer */}
+            <div 
+              className="absolute inset-0 bg-cover bg-no-repeat bg-center blur-sm -z-10" 
+              style={{backgroundImage: 'url(/images/wallpaper.jpg)'}}
+            ></div>
             {children}
 
             {/* <Byline /> */}

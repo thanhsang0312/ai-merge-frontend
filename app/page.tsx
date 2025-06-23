@@ -16,7 +16,7 @@ export default function HomePage() {
       {/* Top Bar */}
       <div className="mb-6 flex w-full items-center justify-between gap-2">
         <Button
-          className="rounded-full bg-transparent px-3 py-2 text-xs hover:bg-[initial]"
+          className="rounded-full bg-transparent px-3 py-2 text-xs hover:bg-transparent"
           // onClick={() => router.push("/buy-premium")}
         >
           <Image
@@ -37,7 +37,7 @@ export default function HomePage() {
           </div>
         </div>
         <Button
-          className="rounded-full bg-transparent hover:bg-[initial]"
+          className="rounded-full bg-transparent hover:bg-transparent"
           onClick={() => router.push('/settings')}
         >
           <Image
@@ -52,7 +52,7 @@ export default function HomePage() {
       <CarouselPair />
       <TabCategories />
       <div className="fixed flex items-center justify-center bottom-10">
-        <Button className="bg-transparent hover:bg-[initial] cursor-pointer">
+        <Button className="bg-transparent hover:bg-transparent cursor-pointer">
           <Image
             width={100}
             height={100}

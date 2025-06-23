@@ -1,12 +1,30 @@
 import React from 'react';
 import { Card, CardContent } from './ui/card';
 import AdsBanner from './AdsBanner';
+import { useRouter } from 'next/navigation';
 
 const CardCharacter = ({ image, name }: { image?: string, name?: string }) => {
+  const router = useRouter();
   return (
-    <Card className='rounded-2xl h-[200px] p-0 overflow-hidden'>
+    <Card 
+      className='rounded-2xl h-[200px] p-0 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-violet-500/25 group' 
+      onClick={() => router.push(`/choose-character?character=${name}`)}
+    >
       <CardContent className='w-full h-full bg-violet-500 px-[initial]'>
-        <img src={image} alt={name} className='w-full h-full object-cover' />
+        <div className="relative h-full w-full">
+          <img 
+            src={image} 
+            alt={name} 
+            className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' 
+          />
+          <div className='absolute top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center transition-all duration-300 group-hover:bg-black/30'>
+            <p className='text-white text-2xl font-bold transition-all duration-300 group-hover:text-3xl group-hover:drop-shadow-lg'>
+              {name}
+            </p>
+          </div>
+          {/* Overlay effect on hover */}
+          <div className='absolute inset-0 bg-gradient-to-t from-violet-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+        </div>
       </CardContent>
     </Card>
   );
